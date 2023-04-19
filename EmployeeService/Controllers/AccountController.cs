@@ -29,6 +29,7 @@ namespace EmployeeService.Controllers
             if (_userRepository.Validate(model.UserName, model.Password))
             {
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                Session["LoginInfo"] = true;
                 return RedirectToLocal(returnUrl);
             }
             // If we got this far, something failed, redisplay form
@@ -50,6 +51,7 @@ namespace EmployeeService.Controllers
 
         public ActionResult LogOff()
         {
+            Session.Remove("LoginInfo");
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }

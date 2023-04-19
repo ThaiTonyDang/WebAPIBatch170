@@ -20,7 +20,19 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Logout", "LogOff", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>
+                        @{
+                            var info = HttpContext.Current.Session["LoginInfo"];
+                            if (info == null)
+                            {@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Logout", "LogOff", "Account", new { area = "" }, new { @class = "nav-link" })
+                        }
+                        }
+
+                    </li>
                 </ul>
             </div>
         </div>
