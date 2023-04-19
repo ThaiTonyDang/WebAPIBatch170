@@ -1,0 +1,15 @@
+﻿@model EmployeeService.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>Login</h2>
+    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder="Mời nhập tên đăng nhập" } })
+    <br />
+    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type="password", @placeholder = "Mời nhập mật khẩu" } })
+    <br />
+    <input type="submit" value="Login" />
+}

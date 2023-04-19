@@ -11,6 +11,7 @@ namespace EmployeeService.Controllers
 {
     public class HomeController : Controller
     {
+        
         public async Task<ActionResult> Index(Employee user)
         {
             ViewBag.Title = "Home Page";
@@ -34,6 +35,7 @@ namespace EmployeeService.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
